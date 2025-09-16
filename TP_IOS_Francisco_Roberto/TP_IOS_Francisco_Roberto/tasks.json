@@ -1,0 +1,34 @@
+[
+    {
+      "id": 1,
+      "name": "Planeamento Estratégico",
+      "description": "Definir metas de curto, médio e longo prazo, analisando cenários e avaliando riscos para garantir que as decisões sejam sustentáveis e vantajosas para os objetivos principais.",
+      "category": "something",
+      "image":"planeamento"
+    },
+
+    {
+      "id": 2,
+      "name": "Gestão de Equipe",
+      "description": "Organizar, motivar e supervisionar os membros da equipe, garantindo que as responsabilidades sejam distribuídas de forma justa e produtiva, além de manter a comunicação clara.",
+      "category": "something else",
+      "image":"team"
+    },
+
+    {
+      "id": 3,
+      "name": "Controle Financeiro",
+      "description": "Monitorar entradas e saídas financeiras, realizar previsões de fluxo de caixa e tomar decisões estratégicas para otimizar recursos e manter a saúde econômica.",
+      "category": "something",
+      "image":"finances"
+    },
+
+    {
+      "id": 4,
+      "name": "Negociação de Parcerias",
+      "description": "Estabelecer e manter relações com aliados estratégicos, identificando oportunidades de colaboração que tragam benefícios mútuos e assegurem crescimento sustentável.",
+      "category": "something else",
+      "image":"negociação"
+    }
+
+]

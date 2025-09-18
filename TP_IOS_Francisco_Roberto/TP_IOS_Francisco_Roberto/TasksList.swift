@@ -29,4 +29,12 @@ class TasksList{
             }
         }
     }
+    
+    func addTask(_ task: Task){
+        allTasks.append(task)
+    }
+    
+    func deleteTask(at index: Int){
+        allTasks.remove(at: index)
+    }
 }

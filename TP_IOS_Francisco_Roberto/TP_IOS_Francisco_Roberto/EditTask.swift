@@ -16,13 +16,14 @@ struct EditTaskView: View {
             TextField("Descrição", text: $task.description)
             TextField("Categoria", text: $task.category)
             TextField("Imagem", text: $task.image)
-        }
+        }			
         .navigationTitle("Editar Tarefa")
     }
 }
 
 #Preview {
-    EditTaskView(task: <#T##Task#>)
+    EditTaskView(task: .constant(Task(id: 1, name: "Teste", description: "ABC", category: "Cat", image: "team")))
 }
+
 
 

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct TaskDetail: View {
     
-    let task : Task
+    var task : Task
+    @Binding var taskBinding: Task
+    func onDelete: ()
     
     var body: some View {
         
@@ -45,10 +47,8 @@ struct TaskDetail: View {
         
         HStack{
             Spacer()
-            Button{
-            
-            }label:{
-                Image(systemName: "square.and.pencil")
+            NavigationLink(destination: EditTaskView(task: $taskBinding)){
+               Image(systemName: "square.and.pencil")
                     .font(.system(size: 25))
             }
                         
@@ -57,6 +57,7 @@ struct TaskDetail: View {
             Button{
             
             }label:{
+                onDelete()
                 Image(systemName: "trash")
                     .font(.system(size: 25))
             }
@@ -69,9 +70,7 @@ struct TaskDetail: View {
 }
 
 #Preview {
-
-    TaskDetail(task:
-        TasksList().allTasks[0])
-
+    TaskDetail(task: TasksList().allTasks[0], taskBinding: .constant(TasksList().allTasks[0]))
 }
+
 

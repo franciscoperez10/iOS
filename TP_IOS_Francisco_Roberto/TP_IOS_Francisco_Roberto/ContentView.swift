@@ -8,49 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    let listTasks = TasksList().allTasks
+    @State var tasks = TasksList().allTasks
     
     var body: some View {
         NavigationStack {
-            List(listTasks){ task in
-                NavigationLink{
-                    TaskDetail(task: task)
-                }label: {
-                    HStack {
-                        Image(task.image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100)
-                            .shadow(color:.white, radius: 1)
-                        Text(task.name)
+            List {
+                ForEach($tasks) { $task in
+                    NavigationLink {
+                        TaskDetail(task: task, taskBinding: $task)
+                    } label: {
+                        HStack {
+                            Image(task.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                                .shadow(color:.white, radius: 1)
+                            Text(task.name)
+                        }
                     }
                 }
-            }.navigationTitle("Tasks")
+            }
+            .navigationTitle("Tasks")
             
-            HStack{
+            HStack {
                 Spacer()
-                Button{
-                
-                }label:{
+                Button {
+                    
+                } label: {
                     Image(systemName: "plus.circle")
                         .font(.system(size: 25))
                 }
-                            
                 Spacer()
-                
-                Button{
-                
-                }label:{
+                Button {
+                    
+                } label: {
                     Image(systemName: "trash")
                         .font(.system(size: 25))
                 }
                 Spacer()
             }
-            
-        }.preferredColorScheme(.dark)
+        }
+        .preferredColorScheme(.dark)
     }
 }
+
 
 #Preview {
     ContentView()

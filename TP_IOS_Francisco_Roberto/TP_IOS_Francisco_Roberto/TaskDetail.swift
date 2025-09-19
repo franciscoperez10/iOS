@@ -8,69 +8,68 @@
 import SwiftUI
 
 struct TaskDetail: View {
-    
-    var task : Task
+    var task: Task
     @Binding var taskBinding: Task
-    func onDelete: ()
-    
+    var onDelete: () -> Void
+
     var body: some View {
-        
-        VStack{
-            
+        VStack {
             Text(task.category)
                 .padding()
                 .multilineTextAlignment(.center)
-            
-            ZStack{
+
+            ZStack {
                 Image(task.image)
                     .resizable()
                     .scaledToFill()
                     .frame(height: 400)
-                    .offset(y:50)
+                    .offset(y: 50)
                     .clipped()
-                    .clipShape(.circle)
-                    .overlay(Circle().stroke(Color.white,lineWidth:  4))
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 4))
                     .padding()
             }
-            
-            
+
             Text(task.name)
                 .font(.title3)
                 .fontWeight(.bold)
-            
+
             Text(task.description)
                 .padding()
                 .multilineTextAlignment(.center)
-            
-        }
-        Spacer()
-        
-        HStack{
+
             Spacer()
-            NavigationLink(destination: EditTaskView(task: $taskBinding)){
-               Image(systemName: "square.and.pencil")
-                    .font(.system(size: 25))
+
+            HStack {
+                Spacer()
+
+                NavigationLink(destination: EditTaskView(task: $taskBinding)) {
+                    Image(systemName: "square.and.pencil")
+                        .font(.system(size: 25))
+                }
+
+                Spacer()
+
+                Button(action: {
+                    onDelete()
+                }) {
+                    Image(systemName: "trash")
+                        .font(.system(size: 25))
+                }
+                
+                Spacer()
             }
-                        
-            Spacer()
-            
-            Button{
-            
-            }label:{
-                onDelete()
-                Image(systemName: "trash")
-                    .font(.system(size: 25))
-            }
-            Spacer()
         }
-        
         .preferredColorScheme(.dark)
-        
     }
 }
 
 #Preview {
-    TaskDetail(task: TasksList().allTasks[0], taskBinding: .constant(TasksList().allTasks[0]))
+    TaskDetail(
+        task: TasksList().allTasks[0],
+        taskBinding: .constant(TasksList().allTasks[0]),
+        onDelete: {}
+    )
 }
 
 

@@ -12,17 +12,26 @@ struct EditTaskView: View {
 
     var body: some View {
         Form {
-            TextField("Nome", text: $task.name)
-            TextField("Descrição", text: $task.description)
-            TextField("Categoria", text: $task.category)
-            TextField("Imagem", text: $task.image)
-        }			
+            Section(header: Text("Nome")) {
+                TextField("Nome", text: $task.name)
+            }
+            Section(header: Text("Descrição")) {
+                TextField("Descrição", text: $task.description)
+            }
+            Section(header: Text("Categoria")) {
+                TextField("Categoria", text: $task.category)
+            }
+            Section(header: Text("Imagem")) {
+                TextField("Imagem", text: $task.image)
+            }
+        }
         .navigationTitle("Editar Tarefa")
     }
 }
 
 #Preview {
-    EditTaskView(task: .constant(Task(id: 1, name: "Teste", description: "ABC", category: "Cat", image: "team")))
+    EditTaskView(task: .constant(Task(
+        id: 10, name: "Teste", description: "ABC", category: "Finances", image: "PNG")))
 }
 
 

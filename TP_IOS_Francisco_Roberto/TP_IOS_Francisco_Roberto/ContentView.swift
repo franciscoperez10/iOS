@@ -10,14 +10,25 @@ import SwiftUI
 struct ContentView: View {
     @State var tasks = TasksList().allTasks
     
+    func deleteTasks(taskToDelete: Task) {
+        if let index = tasks.firstIndex(where: { task in task.id == taskToDelete.id    })
+        {tasks.remove(at: index)
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             List {
                 ForEach($tasks) { $task in
-                    NavigationLink {
-                        TaskDetail(task: task, taskBinding: $task)
-                    } label: {
-                        HStack {
+                    NavigationLink (
+                        destination: TaskDetail(
+                            task: task,
+                            taskBinding: $task,
+                            onDelete: { deleteTasks(taskToDelete: task) }
+                    )
+                        
+                   ) {
+                       HStack {
                             Image(task.image)
                                 .resizable()
                                 .scaledToFit()

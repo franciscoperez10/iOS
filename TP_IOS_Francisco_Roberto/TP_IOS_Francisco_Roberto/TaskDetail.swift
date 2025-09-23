@@ -10,6 +10,7 @@ import SwiftUI
 struct TaskDetail: View {
     var task: Task
     @Binding var taskBinding: Task
+    @Environment(\.dismiss) var dismiss
     var onDelete: () -> Void
 
     var body: some View {
@@ -52,6 +53,7 @@ struct TaskDetail: View {
 
                 Button(action: {
                     onDelete()
+                    dismiss()
                 }) {
                     Image(systemName: "trash")
                         .font(.system(size: 25))
@@ -71,5 +73,6 @@ struct TaskDetail: View {
         onDelete: {}
     )
 }
+
 
 

@@ -16,14 +16,34 @@ struct AddTaskView: View {
     @State private var newTaskDescription: String = ""
     @State private var category : String = ""
     @State private var newImage = String("")
+    @State private var selectedCategories: Categories = .strategy
+    
+    enum Categories: String, CaseIterable, Identifiable {
+        case strategy = "Strategy"
+        case management = "Management"
+        case finances = "Finances"
+        case business = "Business"
+        case product = "Product"
+        
+        var id: String { self.rawValue }
+    }
     
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Nome", text: $newTaskName)
-                TextField("Descrição", text: $newTaskDescription)
-                TextField("Categoria", text: $category)
-                TextField("Imagem", text: $newImage)
+                Section(header: Text("")){
+                    TextField("Nome", text: $newTaskName)}
+                Section(header: Text("")){
+                    TextField("Descrição", text: $newTaskDescription)}
+                Section(header: Text("Categoria")) {
+                    Picker("Categoria", selection: $selectedCategories) {
+                        ForEach(Categories.allCases) { category in
+                            Text(category.rawValue).tag(category)
+                        }
+                    }
+                }
+                Section(header: Text("")){
+                    TextField("Imagem", text: $newImage)}
             }
             .navigationTitle("Add Task")
             .toolbar {
@@ -42,6 +62,7 @@ struct AddTaskView: View {
                 }
             }
         }
+        
         
     }
 }

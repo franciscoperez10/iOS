@@ -24,6 +24,14 @@ struct AuthorsView: View {
                     .foregroundStyle(.black)
                     .padding()
                     .multilineTextAlignment(.center)
+                Text("Autoavaliação: Francisco: 19,7")
+                Text("Autoavaliação: Roberto: 19,7")
+                Spacer()
+        
+                Text("September 2025")
+                    .foregroundStyle(.black)
+                Text("All rights reserved")
+                    
             }
         }
         
